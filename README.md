@@ -50,7 +50,7 @@ pip install -r requirements.txt
 
 ---
 
-## 🔎 Langkah-Langkah Analisis / Pipeline
+## 🔎 Analysis Steps / Pipeline
 1. **Loading Data**
 Importing the California Housing dataset.
 
