@@ -38,7 +38,7 @@ Although the California Housing Prices dataset has been widely used for machine 
   - `median_income`  
   - `median_house_value`
   - `ocean_proximity`
-- **Target:** 'median_house_value'
+- **Target:** `median_house_value`
 ---
 
 ## ⚙️ Requirements
