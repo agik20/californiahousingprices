@@ -1,4 +1,4 @@
-<img width="1247" height="682" alt="histogram for each feature" src="https://github.com/user-attachments/assets/bd97a4a2-3286-4d94-bcbc-127f817ba7e8" /># California Housing Prices – Machine Learning Project
+# California Housing Prices – Machine Learning Project
 
 This repository contains an exploratory data analysis (EDA) and machine learning implementation on the **California Housing Prices dataset**.  
 The dataset originates from the 1990 California census and is famously used in *Hands-On Machine Learning with Scikit-Learn and TensorFlow* by Aurélien Géron.
