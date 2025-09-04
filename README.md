@@ -92,6 +92,27 @@ Creating more informative derived features:
 ### One-Hot Encoding Result Correlation Heatmap
 <img width="1247" height="797" alt="one-hot encoding result correlation heatmap" src="https://github.com/user-attachments/assets/9cd68535-6fe9-4871-8d60-d56b57f010a7" />
 
+## Web Application (Prediction Demo)
+🔹 Run Locally
+git clone https://github.com/USERNAME/california-house-price-app.git
+cd california-house-price-app
+pip install -r requirements.txt
+python app.py
+
+
+Then open:
+👉 http://localhost:5000
+
+🔹 Run with Docker
+docker build -t house-price-app .
+docker run -d -p 80:5000 house-price-app
+
+
+Then access at:
+👉 http://localhost/
+
+or on a VPS: 👉 http://<server-ip>/
+
 
 ## Key Insights / Conclusions
 - Median income is the most dominant factor influencing house prices (correlation ≈ 0.69).
