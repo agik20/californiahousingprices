@@ -94,19 +94,21 @@ Creating more informative derived features:
 
 ## Web Application (Prediction Demo)
 🔹 Run Locally
-git clone https://github.com/USERNAME/california-house-price-app.git
-cd california-house-price-app
+```bash
+git clone https://github.com/agik20/californiahousinprice.git
+cd californiahousinprice
 pip install -r requirements.txt
 python app.py
-
+```
 
 Then open:
 👉 http://localhost:5000
 
 🔹 Run with Docker
+```bash
 docker build -t house-price-app .
 docker run -d -p 80:5000 house-price-app
-
+```
 
 Then access at:
 👉 http://localhost/
