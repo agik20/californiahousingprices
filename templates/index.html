@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Housing Value Predictor | AI-Powered Estimation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-900 font-inter">
+  <div class="container mx-auto px-4 py-8 flex justify-center items-center min-h-screen">
+    <div class="card-industrial">
+      <div class="card-header">
+        <div class="icon-container">
+          <i class="fas fa-house-chimney"></i>
+        </div>
+        <h1 class="text-2xl font-bold">Housing Value Predictor</h1>
+        <p class="text-gray-400">AI-powered property valuation</p>
+      </div>
+      
+      <form id="predictForm" class="space-y-5 mt-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="input-group">
+            <label><i class="fas fa-globe"></i> Longitude</label>
+            <input type="number" step="any" name="longitude" placeholder="-122.23" required>
+          </div>
+          <div class="input-group">
+            <label><i class="fas fa-globe"></i> Latitude</label>
+            <input type="number" step="any" name="latitude" placeholder="37.88" required>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label><i class="fas fa-calendar"></i> Housing Median Age</label>
+          <input type="number" name="housing_median_age" placeholder="41" required>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="input-group">
+            <label><i class="fas fa-door-open"></i> Total Rooms</label>
+            <input type="number" name="total_rooms" placeholder="880" required>
+          </div>
+          <div class="input-group">
+            <label><i class="fas fa-bed"></i> Total Bedrooms</label>
+            <input type="number" name="total_bedrooms" placeholder="129" required>
+          </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="input-group">
+            <label><i class="fas fa-users"></i> Population</label>
+            <input type="number" name="population" placeholder="322" required>
+          </div>
+          <div class="input-group">
+            <label><i class="fas fa-home"></i> Households</label>
+            <input type="number" name="households" placeholder="126" required>
+          </div>
+        </div>
+        
+        <div class="input-group">
+          <label><i class="fas fa-money-bill-wave"></i> Median Income</label>
+          <input type="number" step="any" name="median_income" placeholder="8.33" required>
+        </div>
+        
+        <button type="submit" class="btn-predict">
+          <i class="fas fa-calculator mr-2"></i> Calculate Prediction
+        </button>
+      </form>
+      
+      <div id="result" class="result-container">
+        <div class="result-placeholder">
+          <i class="fas fa-chart-line"></i>
+          <p>Enter property details to get valuation</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
