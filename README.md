@@ -113,8 +113,6 @@ docker run -d -p 80:5000 house-price-app
 Then access at:
 👉 http://localhost/
 
-or on a VPS: 👉 http://<server-ip>/
-
 
 ## Key Insights / Conclusions
 - Median income is the most dominant factor influencing house prices (correlation ≈ 0.69).
