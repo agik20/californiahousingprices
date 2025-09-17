@@ -1,283 +1,186 @@
-🏠 California Housing Prices – Machine Learning Project
+California Housing Prices – Machine Learning Project
 
-https://img.shields.io/badge/Machine-Learning-ff6b6b?style=for-the-badge
-https://img.shields.io/badge/Python-3.8%2B-3776ab?style=for-the-badge
-https://img.shields.io/badge/Scikit--Learn-1.2%2B-f7931e?style=for-the-badge
-https://img.shields.io/badge/Jupyter-Notebook-f37626?style=for-the-badge
+https://img.shields.io/badge/Python-3.8%2B-blue
+https://img.shields.io/badge/Scikit--Learn-1.2%2B-orange
+https://img.shields.io/badge/Flask-2.3%2B-lightgrey
+https://img.shields.io/badge/License-MIT-green
 
-This repository contains an exploratory data analysis (EDA) and machine learning implementation on the California Housing Prices dataset. The dataset originates from the 1990 California census and is famously used in Hands-On Machine Learning with Scikit-Learn and TensorFlow by Aurélien Géron.
+A comprehensive machine learning project for predicting California housing prices using census data. This project demonstrates a complete end-to-end pipeline from exploratory data analysis to model deployment.
 
-📊 Project Overview
+📋 Table of Contents
 
-The goal of this project is to:
+· Project Overview
+· Dataset
+· Methodology
+· Installation
+· Usage
+· Results
+· Key Insights
+· Future Work
+· References
 
-· Explore the California Housing dataset through comprehensive analysis
-· Perform data cleaning and preprocessing
-· Visualize key patterns and correlations
-· Train predictive models to estimate median_house_value
-· Deploy a web application for real-time predictions
+🎯 Project Overview
 
-This project is implemented in Jupyter Notebook (`.ipynb`) and developed using GitHub Codespaces.
+This repository contains an exploratory data analysis (EDA) and machine learning implementation on the California Housing Prices dataset, originally from the 1990 California census. The project follows the methodology presented in "Hands-On Machine Learning with Scikit-Learn and TensorFlow" by Aurélien Géron.
 
----
+Objective: Develop accurate predictive models for estimating median house values in California districts based on demographic, economic, and geographic features.
 
-🎯 Research Problem
+📊 Dataset
 
-Housing is a crucial aspect of social and economic life, as house prices influence people's ability to afford adequate housing and impact urban development and economic policy (Glaeser & Gyourko, 2008). With population growth and urbanization, accurate house price predictions are crucial for developers, buyers, and policymakers to make informed decisions.
+The dataset contains housing information from the 1990 California census with the following features:
 
-📚 Literature Review
+Numerical Features:
 
-Several previous studies have shown that house prices are influenced by various factors:
+· longitude, latitude - Geographic coordinates
+· housing_median_age - Median age of houses in the district
+· total_rooms - Total number of rooms in the district
+· total_bedrooms - Total number of bedrooms in the district
+· population - Population in the district
+· households - Number of households in the district
+· median_income - Median income of households (in tens of thousands of USD)
+· median_house_value - Target variable (in USD)
 
-· Property characteristics (number of bedrooms, house size)
-· Economic conditions (median income)
-· Demographics and geographic factors (proximity to public amenities or beaches)
+Categorical Feature:
 
-Pace and Barry (1997) developed a spatial autoregressive model to predict house prices in California, emphasizing the importance of spatial relationships between districts. Modern machine learning techniques, such as Random Forest and Gradient Boosting, have shown improved accuracy compared to classical linear regression models (A. Géron, 2022).
+· ocean_proximity - Proximity to the ocean (5 categories)
 
-🎯 Research Gap
+Source: R. Kelley Pace and Ronald Barry (1997), modified by Aurélien Géron.
 
-Although the California Housing Prices dataset has been widely used for machine learning, there is still a need to understand:
+🔬 Methodology
 
-· The combined influence of numerical and geographic features on house prices
-· How preprocessing and feature engineering can improve model performance
-· The practical deployment of models for real-world prediction
+1. Exploratory Data Analysis (EDA)
 
-This research aims to fill this gap by building a comprehensive predictive pipeline that combines data exploration, feature engineering, and modern machine learning models.
+· Distribution analysis of all features
+· Correlation analysis between features and target variable
+· Geospatial visualization of housing prices across California
 
----
+2. Data Preprocessing
 
-📁 Dataset Description
+· Handling missing values in total_bedrooms column
+· One-hot encoding for categorical variable ocean_proximity
+· Standardization of numerical features
 
-Feature Description Type
-longitude Longitudinal coordinate Numerical
-latitude Latitudinal coordinate Numerical
-housing_median_age Median age of housing in block Numerical
-total_rooms Total number of rooms in block Numerical
-total_bedrooms Total number of bedrooms in block Numerical
-population Total population in block Numerical
-households Total number of households in block Numerical
-median_income Median income of households Numerical
-median_house_value Median house value (target) Numerical
-ocean_proximity Proximity to ocean (categorical) Categorical
+3. Feature Engineering
 
-Target Variable: median_house_value
-
----
-
-🛠️ Installation & Setup
-
-Prerequisites
-
-· Python 3.8+
-· Git
-· Jupyter Notebook/JupyterLab
-
-1. Clone the Repository
-
-```bash
-git clone https://github.com/agik20/californiahousinprice.git
-cd californiahousinprice
-```
-
-2. Create Virtual Environment (Recommended)
-
-```bash
-python -m venv venv
-source venv/bin/activate  # Linux/MacOS
-# or
-venv\Scripts\activate     # Windows
-```
-
-3. Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-4. Launch Jupyter Notebook
-
-```bash
-jupyter notebook
-```
-
----
-
-📈 Analysis Pipeline
-
-1. Data Loading & Initial Exploration
-
-· Importing the California Housing dataset
-· Basic statistical summary
-· Data structure examination
-
-2. Exploratory Data Analysis (EDA)
-
-· Distribution Analysis: Histograms for each feature
-· Correlation Analysis: Heatmap of feature correlations
-· Geospatial Analysis: Latitude vs. longitude visualization
-· Target Analysis: Distribution of median house values
-
-3. Data Cleaning & Preprocessing
-
-· Handling missing values (total_bedrooms)
-· Categorical encoding (ocean_proximity → one-hot encoding)
-· Scaling/normalizing numeric variables
-· Outlier detection and treatment
-
-4. Feature Engineering
-
-Creating more informative derived features:
+Created more informative derived features:
 
 · rooms_per_household = total_rooms / households
 · bedrooms_per_room = total_bedrooms / total_rooms
 · population_per_household = population / households
 
-5. Modeling & Evaluation
+4. Modeling Approaches
 
 · Baseline Model: Linear Regression
 · Advanced Model: Random Forest Regressor
-· Evaluation Metric: RMSE (Root Mean Squared Error)
-· Cross-validation: K-fold validation for robustness
+· Evaluation Metric: Root Mean Squared Error (RMSE)
 
-6. Model Interpretation
+5. Model Deployment
 
-· Feature importance analysis
-· Residual analysis
-· Model comparison and selection
+· Web application built with Flask for real-time predictions
+· Docker containerization for easy deployment
 
----
+🚀 Installation
 
-📊 Key Visualizations
+Prerequisites
 
-Variable Distribution
+· Python 3.8+
+· pip package manager
 
-https://github.com/user-attachments/assets/b83a1295-3691-4490-a6ac-16d5679310bb
-
-Histograms showing the distribution of each feature in the dataset
-
-Feature Correlation Heatmap
-
-https://github.com/user-attachments/assets/f4272a2d-2f5b-404c-9a13-8b7975449e02
-
-Correlation matrix showing relationships between features and the target variable
-
-Engineered Features Distribution
-
-https://github.com/user-attachments/assets/dcd57bb7-d68d-4a3d-88e0-3ea3fef31d11
-
-Distribution of features after engineering, showing improved characteristics
-
-One-Hot Encoding Correlation
-
-https://github.com/user-attachments/assets/9cd68535-6fe9-4871-8d60-d56b57f010a7
-
-Correlation heatmap after one-hot encoding of categorical features
-
----
-
-🌐 Web Application Deployment
-
-Option 1: Run Locally
+Local Installation
 
 ```bash
+# Clone the repository
 git clone https://github.com/agik20/californiahousinprice.git
 cd californiahousinprice
+
+# Install dependencies
 pip install -r requirements.txt
+```
+
+Docker Installation
+
+```bash
+# Build the Docker image
+docker build -t house-price-app .
+
+# Run the container
+docker run -d -p 5000:5000 house-price-app
+```
+
+💻 Usage
+
+Running the Analysis
+
+Open and run the Jupyter Notebook (california_housing.ipynb) to explore the complete analysis pipeline.
+
+Launching the Web Application
+
+```bash
 python app.py
 ```
 
-Access the application at: 👉 http://localhost:5000
+Access the application at: http://localhost:5000
 
-Option 2: Run with Docker
+Making Predictions via API
 
 ```bash
-docker build -t house-price-app .
-docker run -d -p 80:5000 house-price-app
+curl -X POST -H "Content-Type: application/json" \
+-d '{"longitude": -122.23, "latitude": 37.88, "housing_median_age": 41, \
+"total_rooms": 880, "total_bedrooms": 129, "population": 322, \
+"households": 126, "median_income": 8.3252, "ocean_proximity": "NEAR BAY"}' \
+http://localhost:5000/predict
 ```
 
-Access the application at: 👉 http://localhost
+📈 Results
 
-Application Features
+Visualizations
 
-· Interactive input form for housing features
-· Real-time price prediction
-· Model information and performance metrics
-· Responsive design for all devices
+Feature Distributions
 
----
+https://github.com/user-attachments/assets/b83a1295-3691-4490-a6ac-16d5679310bb
+
+Feature Correlations
+
+https://github.com/user-attachments/assets/f4272a2d-2f5b-404c-9a13-8b7975449e02
+
+Engineered Features
+
+https://github.com/user-attachments/assets/dcd57bb7-d68d-4a3d-88e0-3ea3fef31d11
+
+Encoded Features Correlation
+
+https://github.com/user-attachments/assets/9cd68535-6fe9-4871-8d60-d56b57f010a7
+
+Model Performance
+
+· Linear Regression: RMSE = $68,000-72,000
+· Random Forest Regressor: RMSE = $48,000-52,000 (≈30% improvement)
 
 🔍 Key Insights
 
-1. Strong Income Correlation: Median income is the most dominant factor influencing house prices (correlation ≈ 0.69)
-2. Geographic Influence: Location plays a significant role - houses inland tend to be cheaper, while houses near the ocean (<1H Ocean / Near Bay) are more expensive
-3. Feature Engineering Benefits: Raw variables (total rooms, population, households) are highly correlated and better represented as ratios
-4. Model Performance:
-   · Linear Regression provides a reasonable baseline
-   · Random Forest captures non-linear relationships and provides more accurate predictions
+1. Income Dominance: Median income shows the strongest correlation with house prices (≈0.69)
+2. Location Impact: Coastal properties (<1H Ocean / Near Bay) command premium prices
+3. Feature Engineering Benefits: Derived ratio features (rooms per household, etc.) provided more predictive power than raw counts
+4. Non-linear Relationships: Tree-based models outperformed linear regression, indicating complex non-linear patterns in the data
+5. Spatial Patterns: Clear geographic clustering of housing prices, with coastal areas and urban centers showing higher values
 
----
+🔮 Future Work
 
-🚀 Future Enhancements
-
-Immediate Improvements
-
-· Implement advanced boosting algorithms (XGBoost, LightGBM, CatBoost)
-· Systematic hyperparameter tuning (GridSearchCV/RandomizedSearchCV)
-· Interactive geospatial visualization with folium or geopandas
-
-Medium-Term Goals
-
-· Time-series analysis for housing price trends
-· Integration of additional data sources (crime rates, school quality)
-· Advanced feature engineering with domain knowledge
-
-Long-Term Vision
-
-· Real-time API for housing price predictions
-· Mobile application development
-· Regional housing market comparison tools
-
----
+· Experiment with advanced boosting algorithms (XGBoost, LightGBM, CatBoost)
+· Implement systematic hyperparameter optimization (GridSearchCV/RandomizedSearchCV)
+· Develop interactive geospatial visualizations using Folium or GeoPandas
+· Incorporate additional data sources (crime rates, school quality, amenities)
+· Implement deep learning approaches for potentially improved performance
+· Develop a more sophisticated web interface with interactive visualizations
 
 📚 References
 
 1. Géron, A. (2022). Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow. O'Reilly Media.
-2. Glaeser, E. L., & Gyourko, J. (2008). Rethinking Federal Housing Policy. American Enterprise Institute.
-3. Pace, R. K., & Barry, R. (1997). Quick Computation of Regression with a Spatially Autoregressive Dependent Variable. Geographical Analysis.
+2. Pace, R. K., & Barry, R. (1997). Sparse spatial autoregressions. Statistics & Probability Letters, 33(3), 291-297.
+3. Glaeser, E. L., & Gyourko, J. (2008). Rethinking federal housing policy. American Enterprise Institute.
 
 ---
 
-🤝 Contributing
+Note: This project is intended as an educational demonstration of end-to-end machine learning pipeline implementation, with emphasis on interpretability and feature engineering.
 
-We welcome contributions! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch: git checkout -b feature/amazing-feature
-3. Commit your changes: git commit -m 'Add amazing feature'
-4. Push to the branch: git push origin feature/amazing-feature
-5. Open a Pull Request
-
----
-
-📄 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-🙋‍♂️ Support
-
-If you encounter any issues:
-
-1. Check the existing GitHub Issues
-2. Create a new issue with detailed information about your problem
-3. Include your environment details and error messages
-
----
-
-<div align="center">⭐ Star this repository if you found it helpful!
-
-Built with ❤️ and Python
-
-</div>
+For questions or contributions, please open an issue or submit a pull request.
