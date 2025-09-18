@@ -124,12 +124,51 @@ Created informative derived features:
 
 ### Visualizations
 
-<img width="1500" height="800" alt="image" src="https://github.com/user-attachments/assets/4a5631de-ff7e-421d-9ce7-5565f6b8d3d8" />
-<img width="1500" height="800" alt="image" src="https://github.com/user-attachments/assets/c564791e-315a-4c18-be87-68a54806d6ba" />
-<img width="1500" height="800" alt="image" src="https://github.com/user-attachments/assets/4d5e4b90-2962-4a24-b33a-99878c03bfa9" />
-<img width="1500" height="800" alt="image" src="https://github.com/user-attachments/assets/b8fc824d-b045-475f-a036-3494ef3c82fe" />
-<img width="1500" height="800" alt="image" src="https://github.com/user-attachments/assets/25ccadcf-e511-44f6-9d56-23e92d17805f" />
-<img width="1500" height="800" alt="image" src="https://github.com/user-attachments/assets/96dfaf1f-cfa6-4d21-a9e3-cd65e07bca75" />
+<div align="center">
+  
+**Before Feature Engineering**
+<table>
+<tr>
+<td align="center">
+<img src="https://github.com/user-attachments/assets/4a5631de-ff7e-421d-9ce7-5565f6b8d3d8" width="400" alt="Correlation Matrix Before">
+<br><em>Correlation Matrix (Original Features)</em>
+</td>
+<td align="center">
+<img src="https://github.com/user-attachments/assets/c564791e-315a-4c18-be87-68a54806d6ba" width="400" alt="Feature Distribution Before">
+<br><em>Feature Distribution (Original Features)</em>
+</td>
+</tr>
+</table>
+
+**After Feature Engineering**
+<table>
+<tr>
+<td align="center">
+<img src="https://github.com/user-attachments/assets/4d5e4b90-2962-4a24-b33a-99878c03bfa9" width="400" alt="Correlation Matrix After">
+<br><em>Correlation Matrix (Engineered Features)</em>
+</td>
+<td align="center">
+<img src="https://github.com/user-attachments/assets/b8fc824d-b045-475f-a036-3494ef3c82fe" width="400" alt="Feature Distribution After">
+<br><em>Feature Distribution (Engineered Features)</em>
+</td>
+</tr>
+</table>
+
+**Final Analysis**
+<table>
+<tr>
+<td align="center">
+<img src="https://github.com/user-attachments/assets/25ccadcf-e511-44f6-9d56-23e92d17805f" width="400" alt="Final Correlation">
+<br><em>Final Correlation Analysis</em>
+</td>
+<td align="center">
+<img src="https://github.com/user-attachments/assets/96dfaf1f-cfa6-4d21-a9e3-cd65e07bca75" width="400" alt="Scatter Plots">
+<br><em>Predictor-Target Relationships</em>
+</td>
+</tr>
+</table>
+
+</div>
 
 ## 🌐 Web Application
 
