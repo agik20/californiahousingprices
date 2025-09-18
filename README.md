@@ -1,76 +1,50 @@
 # California Housing Prices – Machine Learning Project
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.2%2B-orange)
-![Flask](https://img.shields.io/badge/Flask-2.3%2B-lightgrey)
-![License](https://img.shields.io/badge/License-MIT-green)
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.2%2B-orange)
+![Status](https://img.shields.io/badge/Status-Completed-success)
 
-A comprehensive machine learning project for predicting California housing prices using census data. This project demonstrates a complete end-to-end pipeline from exploratory data analysis to model deployment.
+A comprehensive machine learning project for predicting California housing prices using census data. This project demonstrates a complete end-to-end ML pipeline from exploratory data analysis to model deployment.
 
 ## 📋 Table of Contents
 - [Project Overview](#-project-overview)
 - [Dataset](#-dataset)
-- [Methodology](#-methodology)
 - [Installation](#-installation)
-- [Usage](#-usage)
+- [Project Structure](#-project-structure)
+- [Methodology](#-methodology)
 - [Results](#-results)
+- [Web Application](#-web-application)
 - [Key Insights](#-key-insights)
 - [Future Work](#-future-work)
-- [References](#-references)
 
 ## 🎯 Project Overview
 
-This repository contains an exploratory data analysis (EDA) and machine learning implementation on the **California Housing Prices dataset**, originally from the 1990 California census. The project follows the methodology presented in *"Hands-On Machine Learning with Scikit-Learn and TensorFlow"* by Aurélien Géron.
+This repository contains an exploratory data analysis (EDA) and machine learning implementation on the **California Housing Prices dataset** from the 1990 California census. The project follows best practices in data science workflow and demonstrates:
 
-**Objective**: Develop accurate predictive models for estimating median house values in California districts based on demographic, economic, and geographic features.
+- Comprehensive data exploration and visualization
+- Data preprocessing and feature engineering
+- Multiple machine learning model implementation
+- Model evaluation and comparison
+- Web application deployment for predictions
+
+**Reference:** This dataset is famously used in *"Hands-On Machine Learning with Scikit-Learn and TensorFlow"* by Aurélien Géron.
 
 ## 📊 Dataset
 
-The dataset contains housing information from the 1990 California census with the following features:
+**Source:** Originally from R. Kelley Pace and Ronald Barry (1997), modified by Aurélien Géron.
 
-**Numerical Features:**
+**Features:**
 - `longitude`, `latitude` - Geographic coordinates
-- `housing_median_age` - Median age of houses in the district
-- `total_rooms` - Total number of rooms in the district
-- `total_bedrooms` - Total number of bedrooms in the district
-- `population` - Population in the district
-- `households` - Number of households in the district
-- `median_income` - Median income of households (in tens of thousands of USD)
-- `median_house_value` - Target variable (in USD)
+- `housing_median_age` - Median age of housing in block
+- `total_rooms` - Total number of rooms in block
+- `total_bedrooms` - Total number of bedrooms in block
+- `population` - Population in block
+- `households` - Number of households in block
+- `median_income` - Median income in block (scaled)
+- `ocean_proximity` - Categorical proximity to ocean
+- `median_house_value` - Target variable (median house value in USD)
 
-**Categorical Feature:**
-- `ocean_proximity` - Proximity to the ocean (5 categories)
-
-**Source**: R. Kelley Pace and Ronald Barry (1997), modified by Aurélien Géron.
-
-## 🔬 Methodology
-
-### 1. Exploratory Data Analysis (EDA)
-- Distribution analysis of all features
-- Correlation analysis between features and target variable
-- Geospatial visualization of housing prices across California
-
-### 2. Data Preprocessing
-- Handling missing values in `total_bedrooms` column
-- One-hot encoding for categorical variable `ocean_proximity`
-- Standardization of numerical features
-
-### 3. Feature Engineering
-Created more informative derived features:
-- `rooms_per_household` = total_rooms / households
-- `bedrooms_per_room` = total_bedrooms / total_rooms
-- `population_per_household` = population / households
-
-### 4. Modeling Approaches
-- **Baseline Model**: Linear Regression
-- **Advanced Model**: Random Forest Regressor
-- **Evaluation Metric**: Root Mean Squared Error (RMSE)
-
-### 5. Model Deployment
-- Web application built with Flask for real-time predictions
-- Docker containerization for easy deployment
-
-## 🚀 Installation
+## 💻 Installation
 
 ### Prerequisites
 - Python 3.8+
@@ -92,74 +66,118 @@ pip install -r requirements.txt
 docker build -t house-price-app .
 
 # Run the container
-docker run -d -p 5000:5000 house-price-app
+docker run -d -p 80:5000 house-price-app
 ```
 
-## 💻 Usage
+## 📁 Project Structure
 
-### Running the Analysis
-Open and run the Jupyter Notebook (`california_housing.ipynb`) to explore the complete analysis pipeline.
-
-### Launching the Web Application
-```bash
-python app.py
 ```
-Access the application at: http://localhost:5000
-
-### Making Predictions via API
-```bash
-curl -X POST -H "Content-Type: application/json" \
--d '{"longitude": -122.23, "latitude": 37.88, "housing_median_age": 41, \
-"total_rooms": 880, "total_bedrooms": 129, "population": 322, \
-"households": 126, "median_income": 8.3252, "ocean_proximity": "NEAR BAY"}' \
-http://localhost:5000/predict
+californiahousinprice/
+├── data/                    # Dataset files
+├── notebooks/               # Jupyter notebooks for EDA
+├── src/                     # Source code
+│   ├── data_processing.py   # Data cleaning and preprocessing
+│   ├── feature_engineering.py # Feature creation
+│   ├── models.py           # ML model implementations
+│   └── visualization.py    # Plotting functions
+├── app.py                  # Flask web application
+├── main.py                 # Main pipeline script
+├── requirements.txt        # Python dependencies
+└── Dockerfile             # Container configuration
 ```
+
+## 🔬 Methodology
+
+### 1. Data Loading & Exploration
+- Initial dataset inspection and statistical summary
+- Missing value analysis (handled in `total_bedrooms`)
+- Distribution analysis of numerical features
+
+### 2. Data Preprocessing
+- Handling missing values using median imputation
+- Categorical encoding (`ocean_proximity` → one-hot encoding)
+- Standard scaling of numerical variables
+
+### 3. Feature Engineering
+Created informative derived features:
+- `rooms_per_household` - Average rooms per household
+- `bedrooms_per_room` - Bedroom to room ratio
+- `population_per_household` - Population density metric
+
+### 4. Modeling Approach
+- **Baseline Model**: Linear Regression
+- **Advanced Model**: Random Forest Regressor with GridSearchCV
+- **Evaluation Metrics**: MAE, MSE, RMSE, R²
+
+### 5. Model Evaluation
+- Cross-validation performance assessment
+- Error analysis and residual examination
+- Feature importance interpretation
 
 ## 📈 Results
 
+### Model Performance
+| Model | MAE | MSE | RMSE | R² Score |
+|-------|-----|-----|------|----------|
+| Linear Regression | 48,660.76 | 4,530,030,653.76 | 67,305.50 | 0.6687 |
+| Random Forest | 32,187.41 | 2,424,929,897.71 | 49,243.58 | 0.8227 |
+
 ### Visualizations
 
-#### Feature Distributions
-![Feature Distributions](https://github.com/user-attachments/assets/b83a1295-3691-4490-a6ac-16d5679310bb)
+#### Variable Distribution
+![histogram for each feature](https://github.com/user-attachments/assets/b83a1295-3691-4490-a6ac-16d5679310bb)
 
-#### Feature Correlations
-![Correlation Heatmap](https://github.com/user-attachments/assets/f4272a2d-2f5b-404c-9a13-8b7975449e02)
+#### Feature Correlation Heatmap
+![feature and target correlation](https://github.com/user-attachments/assets/f4272a2d-2f5b-404c-9a13-8b7975449e02)
 
-#### Engineered Features
-![Engineered Features](https://github.com/user-attachments/assets/dcd57bb7-d68d-4a3d-88e0-3ea3fef31d11)
+#### Engineered Features Distribution
+![histogram for each feature (feature engineering)](https://github.com/user-attachments/assets/dcd57bb7-d68d-4a3d-88e0-3ea3fef31d11)
 
-#### Encoded Features Correlation
-![One-Hot Encoding Correlation](https://github.com/user-attachments/assets/9cd68535-6fe9-4871-8d60-d56b57f010a7)
+#### One-Hot Encoding Correlation
+![one-hot encoding result correlation heatmap](https://github.com/user-attachments/assets/9cd68535-6fe9-4871-8d60-d56b57f010a7)
 
-### Model Performance
-- **Linear Regression**: RMSE = $68,000-72,000
-- **Random Forest Regressor**: RMSE = $48,000-52,000 (≈30% improvement)
+## 🌐 Web Application
+
+The project includes a Flask web application for interactive predictions:
+
+### Local Deployment
+```bash
+python app.py
+```
+Access at: http://localhost:5000
+
+### Docker Deployment
+```bash
+docker build -t house-price-app .
+docker run -d -p 80:5000 house-price-app
+```
+Access at: http://localhost
 
 ## 🔍 Key Insights
 
 1. **Income Dominance**: Median income shows the strongest correlation with house prices (≈0.69)
-2. **Location Impact**: Coastal properties (<1H Ocean / Near Bay) command premium prices
-3. **Feature Engineering Benefits**: Derived ratio features (rooms per household, etc.) provided more predictive power than raw counts
-4. **Non-linear Relationships**: Tree-based models outperformed linear regression, indicating complex non-linear patterns in the data
-5. **Spatial Patterns**: Clear geographic clustering of housing prices, with coastal areas and urban centers showing higher values
+2. **Geographic Influence**: Coastal properties command premium prices, with "Near Ocean" and "Near Bay" locations being most valuable
+3. **Feature Engineering Value**: Derived ratio features (rooms per household, etc.) provided more predictive power than raw counts
+4. **Model Performance**: Random Forest significantly outperformed Linear Regression (R²: 0.82 vs 0.67), capturing non-linear relationships
+5. **Spatial Patterns**: Clear geographic clustering of housing values, with higher prices concentrated in coastal regions
 
-## 🔮 Future Work
+## 🚀 Future Work
 
-- Experiment with advanced boosting algorithms (XGBoost, LightGBM, CatBoost)
-- Implement systematic hyperparameter optimization (GridSearchCV/RandomizedSearchCV)
-- Develop interactive geospatial visualizations using Folium or GeoPandas
-- Incorporate additional data sources (crime rates, school quality, amenities)
-- Implement deep learning approaches for potentially improved performance
-- Develop a more sophisticated web interface with interactive visualizations
+- **Advanced Models**: Experiment with gradient boosting algorithms (XGBoost, LightGBM, CatBoost)
+- **Hyperparameter Optimization**: Implement Bayesian optimization or more extensive grid search
+- **Geospatial Analysis**: Integrate interactive mapping with Folium or GeoPandas
+- **Feature Expansion**: Incorporate additional external data sources (crime rates, school quality, etc.)
+- **Deployment Enhancement**: Containerize with Kubernetes for scalable deployment
+- **Monitoring**: Implement model performance monitoring and drift detection
 
 ## 📚 References
 
-1. Géron, A. (2022). Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow. O'Reilly Media.
-2. Pace, R. K., & Barry, R. (1997). Sparse spatial autoregressions. Statistics & Probability Letters, 33(3), 291-297.
-3. Glaeser, E. L., & Gyourko, J. (2008). Rethinking federal housing policy. American Enterprise Institute.
+1. Géron, A. (2022). Hands-On Machine Learning with Scikit-Learn and TensorFlow.
+2. Pace, R. K., & Barry, R. (1997). Sparse spatial autoregressions. Statistics & Probability Letters.
+3. Glaeser, E. L., & Gyourko, J. (2008). Housing Dynamics. Harvard Institute of Economic Research.
 
 ---
 
-**Note**: This project is intended as an educational demonstration of end-to-end machine learning pipeline implementation, with emphasis on interpretability and feature engineering.
+**Note**: This project serves as an educational example of a complete machine learning pipeline from data exploration to deployment. The code and methodologies can be adapted for similar regression problems in real estate and other domains.
 
 For questions or contributions, please open an issue or submit a pull request.
