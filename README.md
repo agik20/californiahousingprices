@@ -124,17 +124,12 @@ Created informative derived features:
 
 ### Visualizations
 
-#### Variable Distribution
-![histogram for each feature](https://github.com/user-attachments/assets/b83a1295-3691-4490-a6ac-16d5679310bb)
-
-#### Feature Correlation Heatmap
-![feature and target correlation](https://github.com/user-attachments/assets/f4272a2d-2f5b-404c-9a13-8b7975449e02)
-
-#### Engineered Features Distribution
-![histogram for each feature (feature engineering)](https://github.com/user-attachments/assets/dcd57bb7-d68d-4a3d-88e0-3ea3fef31d11)
-
-#### One-Hot Encoding Correlation
-![one-hot encoding result correlation heatmap](https://github.com/user-attachments/assets/9cd68535-6fe9-4871-8d60-d56b57f010a7)
+<img width="1500" height="800" alt="image" src="https://github.com/user-attachments/assets/4a5631de-ff7e-421d-9ce7-5565f6b8d3d8" />
+<img width="1500" height="800" alt="image" src="https://github.com/user-attachments/assets/c564791e-315a-4c18-be87-68a54806d6ba" />
+<img width="1500" height="800" alt="image" src="https://github.com/user-attachments/assets/4d5e4b90-2962-4a24-b33a-99878c03bfa9" />
+<img width="1500" height="800" alt="image" src="https://github.com/user-attachments/assets/b8fc824d-b045-475f-a036-3494ef3c82fe" />
+<img width="1500" height="800" alt="image" src="https://github.com/user-attachments/assets/25ccadcf-e511-44f6-9d56-23e92d17805f" />
+<img width="1500" height="800" alt="image" src="https://github.com/user-attachments/assets/96dfaf1f-cfa6-4d21-a9e3-cd65e07bca75" />
 
 ## 🌐 Web Application
 
