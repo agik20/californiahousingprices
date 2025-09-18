@@ -1,0 +1,16 @@
+=== Linear Regression Evaluation ===
+MAE  : 48660.7566
+MSE  : 4530030653.7604
+RMSE : 67305.5024
+R²   : 0.6687
+
+
+Fitting 5 folds for each of 81 candidates, totalling 405 fits
+Best params: {'max_depth': None, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 300}
+Best score (CV): 0.8130901639085201
+
+=== Random Forest Evaluation ===
+MAE  : 32187.4050
+MSE  : 2424929897.7120
+RMSE : 49243.5772
+R²   : 0.8227
